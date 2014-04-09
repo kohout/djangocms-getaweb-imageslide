@@ -1,0 +1,58 @@
+{% load i18n cmsimageslider %}
+{% if images %}
+<header id="home-header">
+  <section id="home-hero-content" class="full-width-image">
+    <div class="container" id="home-hero">
+      <div class="full-width columns">
+        <div class="hero-image">
+          <section id="home-slider" class="flexslider" data-animation="slide"
+                   data-control-nav="yes" data-slideshow-speed="8000">
+            <ul class="slides">
+              {% for image in images %}
+                <li>
+                  {{ image|image:'fullscreen' }}
+                  {% if image.title or image.alt %}
+                    <div class="container">
+                      <div class="full-width columns">
+                        <div class="flex-caption" data-width="420px"
+                             data-bg-color="ffffff"
+                             data-bg-opacity="0.9"
+                             data-bottom="30px"
+                             data-border-color="e8554e">
+                          <h3 class="mb-7px">{{ image.title }}</h3>
+                          <p class="middle-font-size mb-5px">{{ image.alt }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  {% endif %}
+                </li>
+              {% endfor %}
+            </ul>
+          </section>
+        </div>
+        </div>
+      </div>
+    </section>
+  </header>
+
+  {% if instance.title or instance.subtitle %}
+    <section id="home-featured-content" class="tight">
+      <div class="grid-bg">
+        <div class="container">
+          <div class="full-width columns">
+            {% if instance.title %}
+              <h3 class="grey align-center mb-5px">
+                {{ instance.title }}
+              </h3>
+            {% endif %}
+            {% if instance.subtitle %}
+              <p class="middle-font-size align-center">
+                {{ instance.subtitle }}
+              </p>
+            {% endif %}
+          </div>
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endif %}
