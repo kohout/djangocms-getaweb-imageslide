@@ -42,7 +42,7 @@ class ImageSliderItem(models.Model):
         verbose_name=_(u'Ordering'))
 
     image = ThumbnailerImageField(
-        upload_to='news_image/',
+        upload_to='cms_imageslider/',
         verbose_name=_(u'Image'))
 
     image_width = models.PositiveSmallIntegerField(
